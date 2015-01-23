@@ -24,11 +24,13 @@ extends 'DBIx::Class::Core';
 
 =item * L<DBIx::Class::InflateColumn::DateTime>
 
+=item * L<DBIx::Class::TimeStamp>
+
 =back
 
 =cut
 
-__PACKAGE__->load_components("InflateColumn::DateTime");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp");
 
 =head1 TABLE: C<book>
 
@@ -54,6 +56,16 @@ __PACKAGE__->table("book");
   data_type: 'integer'
   is_nullable: 1
 
+=head2 created
+
+  data_type: 'timestamp'
+  is_nullable: 1
+
+=head2 updated
+
+  data_type: 'timestamp'
+  is_nullable: 1
+
 =cut
 
 __PACKAGE__->add_columns(
@@ -63,6 +75,10 @@ __PACKAGE__->add_columns(
   { data_type => "text", is_nullable => 1 },
   "rating",
   { data_type => "integer", is_nullable => 1 },
+  "created",
+  { data_type => "timestamp", is_nullable => 1 },
+  "updated",
+  { data_type => "timestamp", is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -102,18 +118,21 @@ Composing rels: L</book_authors> -> author
 
 =cut
 
-# many_to_many():
-#   args:
-#     1) Name of relationship bridge, DBIC will create accessor with this name
-#     2) Name of has_many() relationship this many_to_many() is shortcut for
-#     3) Name of belongs_to() relationship in model class of has_many() above
-#   You must already have the has_many() defined to use a many_to_many().
 __PACKAGE__->many_to_many("authors", "book_authors", "author");
 
 
-# Created by DBIx::Class::Schema::Loader v0.07025 @ 2015-01-22 14:22:40
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ac7lZBmAs+qJMmLdaxi0uQ
+# Created by DBIx::Class::Schema::Loader v0.07025 @ 2015-01-23 17:42:02
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:dusoFNjjmdMKjJJL6upzSA
 
+#
+# Enable automatic date handling
+#
+__PACKAGE__->add_columns(
+    "created",
+    { data_type => 'timestamp', set_on_create => 1 },
+    "updated",
+    { data_type => 'timestamp', set_on_create => 1, set_on_update => 1 },
+);
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
