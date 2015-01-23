@@ -102,6 +102,12 @@ Composing rels: L</book_authors> -> author
 
 =cut
 
+# many_to_many():
+#   args:
+#     1) Name of relationship bridge, DBIC will create accessor with this name
+#     2) Name of has_many() relationship this many_to_many() is shortcut for
+#     3) Name of belongs_to() relationship in model class of has_many() above
+#   You must already have the has_many() defined to use a many_to_many().
 __PACKAGE__->many_to_many("authors", "book_authors", "author");
 
 
