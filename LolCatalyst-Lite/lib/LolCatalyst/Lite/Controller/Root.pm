@@ -92,7 +92,7 @@ translate and return a JSON response
 
 =cut
 
-sub translate_service {
+sub translate_service :Path('translate_service') {
   my ($self, $c) = @_;
 
   $c->forward('translate');

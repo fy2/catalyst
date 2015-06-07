@@ -3,7 +3,7 @@
 [% IF result %] <p> [% lol _ ": " _ result %] </p> [% END %]
 
 <form name="translate" method=POST action="translate">
-	<input type="text" name="lol" value="Can I have a cheese burger please?" title="enter text to trans">
-	<input type="submit" value="translate">
+	<input type="text" name="lol" value="" title="enter text to trans">
+	<input type="submit" value="Translate">
 </form>
 
