@@ -3,6 +3,8 @@ package LolCatalyst::Lite::View::Service;
 use strict;
 use base 'Catalyst::View::JSON';
 
+__PACKAGE__->config({ expose_stash => [qw/lol result/] });
+
 =head1 NAME
 
 LolCatalyst::Lite::View::Service - Catalyst JSON View
