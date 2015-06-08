@@ -95,6 +95,8 @@ translate and return a JSON response
 sub translate_service :Path('translate_service') {
   my ($self, $c) = @_;
 
+  $c->authenticate;
+
   $c->forward('translate');
 
   # Recall this was created earlier with:  *_create.pl view Service JSON

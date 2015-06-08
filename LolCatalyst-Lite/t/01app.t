@@ -49,6 +49,7 @@ $request = POST(
     'lol' => 'Can I have a cheese burger?',
   ]);
 
+$request->headers->authorization_basic('fred', 'wilma');
 $response = undef;
 
 ok($response = request($request), 'Request to return JSON');
