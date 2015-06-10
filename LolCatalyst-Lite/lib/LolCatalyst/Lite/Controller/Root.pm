@@ -50,7 +50,7 @@ sub translate :Path('translate') {
 	#$c->req->query_params catch only GET params
     $c->stash(
 	   lol => $lol,
-	   result => $c->model('Translate')->translate($lol),
+	   result => $c->model('Translator')->translate($lol),
 	   template => 'index.tt',
    );
 
