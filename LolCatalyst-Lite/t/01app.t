@@ -13,12 +13,13 @@ BEGIN { use_ok 'Catalyst::Test', 'LolCatalyst::Lite'}
 use HTTP::Headers;
 use HTTP::Request::Common;
 
-diag <<EOF;
+diag <<EOF
 ****************WARNING********************
 The APP_TEST environment is not set.
 To ensure that authentication is tested properly. Please run this test with:
 APP_TEST=1 prove -l $0 
 EOF
+if !$ENV{APP_TEST};
 # GET request
 
 my $request = GET('http://localhost');
