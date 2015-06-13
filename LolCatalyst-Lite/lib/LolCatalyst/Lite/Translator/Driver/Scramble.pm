@@ -1,4 +1,4 @@
-package LolCatalyst::Lite::Translator::Scramble;
+package LolCatalyst::Lite::Translator::Driver::Scramble;
 use Moose;
 
 =head1 NAME

@@ -15,7 +15,7 @@ has '_translators' => (
 
 sub _build__translators {
   my ($self) = @_;
-  my $base = __PACKAGE__;
+  my $base = __PACKAGE__ . '::Driver';
 
   my $mp = Module::Pluggable::Object->new(
     search_path => [ $base ]

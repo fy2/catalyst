@@ -1,4 +1,4 @@
-package LolCatalyst::Lite::Translator::LOLCAT;
+package LolCatalyst::Lite::Translator::Driver::LOLCAT;
 use Moose;
 use namespace::autoclean;
 use Acme::LOLCAT ();
