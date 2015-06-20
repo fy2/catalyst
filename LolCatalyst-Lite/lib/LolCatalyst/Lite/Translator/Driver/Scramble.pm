@@ -1,5 +1,6 @@
 package LolCatalyst::Lite::Translator::Driver::Scramble;
 use Moose;
+with 'LolCatalyst::Lite::Interface::TranslationDriver';
 
 =head1 NAME
 

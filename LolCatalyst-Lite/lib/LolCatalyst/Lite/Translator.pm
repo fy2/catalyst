@@ -2,6 +2,7 @@ package LolCatalyst::Lite::Translator;
 
 use Moose;
 use Module::Pluggable::Object;
+use aliased 'LolCatalyst::Lite::Interface::TranslationDriver';
 use namespace::clean -excep => 'meta';
 
 has 'default_target' => (
@@ -34,6 +35,9 @@ sub _build__translators {
     # 'Class::MOP::load_class' but aparently MOP has been deprecated! It is now
     # Class::Load::load_class instead.....
     Class::Load::load_class($class); 
+    unless ($class->does(TranslationDriver)) { # making use of aliased and Moose roles here...
+      confess "Class ${class} in ${base}:: namespace does not implement TranslationDriver interface";
+    }
 
     # We copy here the class to name and then strip the base off the front of
     # the copy in $name. The \Q...\E says that if any regex special chars appear

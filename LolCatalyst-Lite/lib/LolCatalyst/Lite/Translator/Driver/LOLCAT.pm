@@ -3,7 +3,7 @@ use Moose;
 use namespace::autoclean;
 use Acme::LOLCAT ();
 
-extends 'Catalyst::Model';
+with 'LolCatalyst::Lite::Interface::TranslationDriver';
 
 =head1 NAME
 
