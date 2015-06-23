@@ -13,4 +13,5 @@ my $input = 'hello world';
 my $scrambled = $tr->translate_to('Scramble', $input);
 
 like($scrambled, qr/h...o w...d/, 'text matches first and last');
-isnt($scrambled, $input, 'text was altered');
+# isnt($scrambled, $input, 'text was altered'); this test fails sometimes as it
+# is wrong logic...
